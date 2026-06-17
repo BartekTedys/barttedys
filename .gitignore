@@ -1,0 +1,9 @@
+.next/
+node_modules/
+.env.local
+*.pt
+public/cv-bart-tedys.pdf
+.DS_Store
+dist/
+out/
+__pycache__/

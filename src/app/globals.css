@@ -1,0 +1,67 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f0a;
+  --surface: #111811;
+  --surface-2: #162016;
+  --border: #1e2e1e;
+  --green-primary: #4ade80;
+  --green-dim: #22c55e;
+  --green-muted: #166534;
+  --green-faint: #0f2d1a;
+  --text-primary: #e8f5e9;
+  --text-secondary: #9ca3af;
+  --text-dim: #4b5563;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green-muted); }
+::selection { background: var(--green-muted); color: var(--green-primary); }
+
+/* Leaflet dark overrides */
+.leaflet-container { background: #0a0f0a !important; font-family: 'Space Grotesk', system-ui !important; }
+.leaflet-control-attribution { background: rgba(10,15,10,0.8) !important; color: var(--text-dim) !important; font-size: 10px !important; }
+.leaflet-control-zoom a { background: var(--surface) !important; color: var(--green-primary) !important; border-color: var(--border) !important; }
+.leaflet-tile-pane { opacity: 1; }
+.leaflet-tile { filter: brightness(0.88) saturate(0.8); }
+
+/* Hide scrollbar on tab row */
+.tabs-scroll::-webkit-scrollbar { display: none; }
+.tabs-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 4px rgba(74,222,128,0.4); }
+  50% { box-shadow: 0 0 10px rgba(74,222,128,0.8); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-blink { animation: blink 1s step-end infinite; }
