@@ -349,7 +349,7 @@ export default function MapDemo() {
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/wageningen-preview.jpg"
+            src="/wageningen-preview.png"
             alt="Wageningen tree canopy detection overlay"
             style={{ width: '100%', display: 'block' }}
           />
