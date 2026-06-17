@@ -10,6 +10,11 @@ export default function About() {
     { cat: 'Geospatial', items: ['PDOK / WMS/WMTS', 'GeoJSON', 'Leaflet', 'Remote Sensing', 'Aerial Imagery'] },
   ]
 
+  const links = [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bartlomiej-tedys-6418ab251/', icon: '↗' },
+    { label: 'GitHub', href: 'https://github.com/BartekTedys', icon: '↗' },
+  ]
+
   return (
     <section id="about" style={{ width: '100%', background: 'var(--surface)' }}>
       <div style={{
@@ -83,39 +88,40 @@ export default function About() {
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-              {[
-                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bartlomiej-tedys-6418ab251/', icon: '↗' },
-                { label: 'GitHub', href: 'https://github.com/BartekTedys', icon: '↗' },
-              ].map(l => (
-                <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{
-                  padding: '0.45rem 1rem', border: '1px solid var(--border)', borderRadius: '4px',
-                  color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.8rem',
-                  fontFamily: "'JetBrains Mono', monospace", display: 'flex', alignItems: 'center',
-                  gap: '0.4rem', transition: 'all 0.2s',
-                }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--green-primary)'; e.currentTarget.style.color = 'var(--green-primary)' }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
-                >
-                  {l.label} {l.icon}
-                </a>
-              ))}
-            </div>
-
-            <div style={{
-              marginTop: '2rem', padding: '0.85rem 1.25rem',
-              background: 'var(--green-faint)', border: '1px solid var(--green-muted)',
-              borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.75rem',
-            }}>
-              <div style={{
-                width: '8px', height: '8px', borderRadius: '50%',
-                background: 'var(--green-primary)', flexShrink: 0,
-                boxShadow: '0 0 8px var(--green-primary)',
-              }} />
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
-                Available for work - open to roles in the Netherlands
-              </p>
-            </div>
+            {/* Desktop only: links and availability stay in bio column */}
+            {!isMobile && (
+              <>
+                <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+                  {links.map(l => (
+                    <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{
+                      padding: '0.45rem 1rem', border: '1px solid var(--border)', borderRadius: '4px',
+                      color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.8rem',
+                      fontFamily: "'JetBrains Mono', monospace", display: 'flex', alignItems: 'center',
+                      gap: '0.4rem', transition: 'all 0.2s',
+                    }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--green-primary)'; e.currentTarget.style.color = 'var(--green-primary)' }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
+                    >
+                      {l.label} {l.icon}
+                    </a>
+                  ))}
+                </div>
+                <div style={{
+                  marginTop: '2rem', padding: '0.85rem 1.25rem',
+                  background: 'var(--green-faint)', border: '1px solid var(--green-muted)',
+                  borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.75rem',
+                }}>
+                  <div style={{
+                    width: '8px', height: '8px', borderRadius: '50%',
+                    background: 'var(--green-primary)', flexShrink: 0,
+                    boxShadow: '0 0 8px var(--green-primary)',
+                  }} />
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
+                    Available for work - open to roles in the Netherlands
+                  </p>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Skills + Education column */}
@@ -189,6 +195,41 @@ export default function About() {
                 </div>
               ))}
             </div>
+
+            {/* Mobile only: links and availability at bottom of section */}
+            {isMobile && (
+              <>
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  {links.map(l => (
+                    <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{
+                      padding: '0.45rem 1rem', border: '1px solid var(--border)', borderRadius: '4px',
+                      color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.8rem',
+                      fontFamily: "'JetBrains Mono', monospace", display: 'flex', alignItems: 'center',
+                      gap: '0.4rem', transition: 'all 0.2s',
+                    }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--green-primary)'; e.currentTarget.style.color = 'var(--green-primary)' }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)' }}
+                    >
+                      {l.label} {l.icon}
+                    </a>
+                  ))}
+                </div>
+                <div style={{
+                  padding: '0.85rem 1.25rem',
+                  background: 'var(--green-faint)', border: '1px solid var(--green-muted)',
+                  borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.75rem',
+                }}>
+                  <div style={{
+                    width: '8px', height: '8px', borderRadius: '50%',
+                    background: 'var(--green-primary)', flexShrink: 0,
+                    boxShadow: '0 0 8px var(--green-primary)',
+                  }} />
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
+                    Available for work - open to roles in the Netherlands
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
