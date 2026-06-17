@@ -77,14 +77,24 @@ body {
     max-width: 100% !important;
   }
   .tabs-row {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    flex-wrap: nowrap !important;
-  }
-  .tabs-row::-webkit-scrollbar {
-    display: none !important;
-  }
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--green-muted) var(--border) !important;
+  flex-wrap: nowrap !important;
+}
+.tabs-row::-webkit-scrollbar {
+  display: block !important;
+  height: 3px !important;
+}
+.tabs-row::-webkit-scrollbar-track {
+  background: var(--border) !important;
+}
+.tabs-row::-webkit-scrollbar-thumb {
+  background: var(--green-muted) !important;
+  border-radius: 2px !important;
+}
   .tabs-row button {
     white-space: nowrap !important;
     flex-shrink: 0 !important;

@@ -125,7 +125,7 @@ export default function About() {
           </div>
 
           {/* Skills + Education column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', paddingTop: '1rem' }}>
             <div>
               <p style={{
                 fontFamily: "'JetBrains Mono', monospace", fontSize: '0.65rem',
