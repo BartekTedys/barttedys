@@ -48,7 +48,7 @@ export default function ModelInfo() {
         </h2>
 
         {/* Tabs */}
-        <div className="tabs-scroll" style={{
+        <div style={{
           display: 'flex',
           gap: '0',
           borderBottom: '1px solid var(--border)',
@@ -80,9 +80,9 @@ export default function ModelInfo() {
         </div>
 
         {/* Tab content */}
-        <div style={{
+        <div className='two-col-grid' style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '4rem',
           alignItems: 'start',
         }}>
@@ -103,7 +103,7 @@ export default function ModelInfo() {
                 {[
                   { label: 'Architecture', value: 'YOLOv11x-seg' },
                   { label: 'Training data', value: 'Custom annotated dataset, Netherlands aerial imagery' },
-                  { label: 'Image source', value: 'PDOK Beeldmateriaal - 8cm & 25cm/px RGB orthophotos' },
+                  { label: 'Image source', value: 'PDOK Beeldmateriaal — 8cm & 25cm/px RGB orthophotos' },
                   { label: 'Tile size', value: '640 × 640px' },
                   { label: 'Framework', value: 'Ultralytics / PyTorch' },
                   { label: 'Deployment', value: 'ONNX → QGIS Deepness plugin / Modal serverless' },
@@ -129,21 +129,21 @@ export default function ModelInfo() {
               <div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>Dataset</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300, marginBottom: '1.5rem' }}>
-                  A custom dataset was created using Roboflow, with manually annotated instance segmentation masks over Dutch urban aerial imagery. Existing public datasets were found to be incomplete or inconsistent for this specific task. The annotation process required careful handling of overlapping canopies; dense forest areas where individual crowns couldn't be distinguished were annotated as unified clusters, while clearly isolated trees were annotated individually.
+                  A custom dataset was created using Roboflow, with manually annotated instance segmentation masks over Dutch urban aerial imagery. Existing public datasets were found to be incomplete or inconsistent for this specific task. The annotation process required careful handling of overlapping canopies — dense forest areas where individual crowns couldn't be distinguished were annotated as unified clusters, while clearly isolated trees were annotated individually.
                 </p>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>Training</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300, marginBottom: '1.5rem' }}>
-                  The dataset was augmented through rotations and flipping. All three models were trained using transfer learning from MS COCO pre-trained weights, which significantly reduced training time given the relatively small dataset. YOLOv11 was trained using the Ultralytics framework with cosine annealing learning rate scheduling and multi-criteria early stopping.
+                  All three models were trained using transfer learning from MS COCO pre-trained weights, which significantly reduced training time given the relatively small dataset. YOLOv11 was trained using the Ultralytics framework with cosine annealing learning rate scheduling and multi-criteria early stopping. The dataset was augmented through rotations and flipping.
                 </p>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>Evaluation</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300 }}>
-                  All models were evaluated using a standardised framework with the Hungarian algorithm for optimal instance matching, ensuring mathematically fair comparison between predicted and ground-truth canopies. Metrics included mAP at IoU thresholds from 0.50 to 0.95, boundary precision/recall/F1, and performance stratified by tree density and size.
+                  All models were evaluated using a standardised framework with the Hungarian algorithm for optimal instance matching — ensuring mathematically fair comparison between predicted and ground-truth canopies. Metrics included mAP at IoU thresholds from 0.50 to 0.95, boundary precision/recall/F1, and performance stratified by tree density and size.
                 </p>
               </div>
               <div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>GIS integration</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300, marginBottom: '1.5rem' }}>
-                  YOLOv11x was converted to ONNX format and deployed within QGIS using the Deepness plugin, which handles sliding-window tiling across large aerial mosaics and stitches results back into georeferenced vector layers. This pipeline was used to produce the Wageningen city-scale inference shown on this site.
+                  All models were converted to ONNX format and deployed within QGIS using the Deepness plugin, which handles sliding-window tiling across large aerial mosaics and stitches results back into georeferenced vector layers. This pipeline was used to produce the Wageningen city-scale inference shown on this site.
                 </p>
                 <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>Initial experimentation</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300 }}>
@@ -157,7 +157,7 @@ export default function ModelInfo() {
             <>
               <div>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300, marginBottom: '2rem' }}>
-                  YOLOv11x-seg outperformed both Mask R-CNN and YOLACT++ across all primary metrics, with a particularly significant lead in mAP50; the standard detection benchmark at 50% IoU overlap.
+                  YOLOv11x-seg outperformed both Mask R-CNN and YOLACT++ across all primary metrics, with a particularly significant lead in mAP50 — the standard detection benchmark at 50% IoU overlap.
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
                   {[
@@ -197,7 +197,7 @@ export default function ModelInfo() {
               </div>
               <div>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300 }}>
-                  YOLOv11 achieved an mAP50 of 0.623, roughly 24 percentage points above the average of the other two models. At the stricter mAP75 threshold, the gap widens further, suggesting YOLOv11 produces more precisely aligned segmentation masks rather than just approximate detections. Boundary F1 scores were lower across all models, reflecting the genuine difficulty of delineating exact crown perimeters in dense urban canopy. This is a known challenge in the field.
+                  YOLOv11 achieved an mAP50 of 0.623 — roughly 24 percentage points above the average of the other two models. At the stricter mAP75 threshold, the gap widens further, suggesting YOLOv11 produces more precisely aligned segmentation masks rather than just approximate detections. Boundary F1 scores were lower across all models, reflecting the genuine difficulty of delineating exact crown perimeters in dense urban canopy — a known challenge in the field.
                 </p>
               </div>
             </>
@@ -212,7 +212,7 @@ export default function ModelInfo() {
                 {[
                   {
                     title: 'Dense forest annotation',
-                    body: 'Where tree crowns overlap continuously (as in forest patches) it was not possible to annotate individual instances at this image resolution. These areas were annotated as unified clusters, which means the model cannot separate individual trees within dense canopy. You\'ll see this in the Wageningen result as large merged blobs in forested zones.',
+                    body: 'Where tree crowns overlap continuously — as in forest patches — it was not possible to annotate individual instances at this image resolution. These areas were annotated as unified clusters, which means the model cannot separate individual trees within dense canopy. You\'ll see this in the Wageningen result as large merged blobs in forested zones.',
                   },
                   {
                     title: 'Dataset size',
@@ -245,7 +245,7 @@ export default function ModelInfo() {
                   The foundation is solid. With more annotated data, consistent high-resolution imagery, and further training, the model accuracy would improve substantially. Additional directions worth exploring include multispectral imagery (near-infrared helps distinguish vegetation from other green surfaces), species classification, and health assessment from crown texture.
                 </p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.8, fontWeight: 300 }}>
-                  The QGIS + Deepness integration already makes this practical for real urban forestry workflows. The pipeline from aerial imagery to GIS vector layer is complete and working. Scaling it up is an engineering and data problem, not a fundamental research one.
+                  The QGIS + Deepness integration already makes this practical for real urban forestry workflows — the pipeline from aerial imagery to GIS vector layer is complete and working. Scaling it up is an engineering and data problem, not a fundamental research one.
                 </p>
               </div>
             </>

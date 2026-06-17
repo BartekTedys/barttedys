@@ -1,3 +1,8 @@
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 @import 'leaflet/dist/leaflet.css';
 
 @tailwind base;
@@ -42,10 +47,6 @@ body {
 .leaflet-tile-pane { opacity: 1; }
 .leaflet-tile { filter: brightness(0.88) saturate(0.8); }
 
-/* Hide scrollbar on tab row */
-.tabs-scroll::-webkit-scrollbar { display: none; }
-.tabs-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-
 @keyframes scanline {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100vh); }
@@ -65,3 +66,55 @@ body {
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .animate-blink { animation: blink 1s step-end infinite; }
+
+/* Mobile layout overrides — more reliable than JS detection */
+@media (max-width: 768px) {
+  .two-col-grid {
+    display: block !important;
+  }
+  .two-col-grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .tabs-row {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    flex-wrap: nowrap !important;
+  }
+  .tabs-row::-webkit-scrollbar {
+    display: none !important;
+  }
+  .tabs-row button {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+  .hide-mobile {
+    display: none !important;
+  }
+  section, .section-inner {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* Hide desktop-only elements on mobile, hide mobile-only on desktop */
+@media (max-width: 768px) {
+  .hide-desktop { display: block !important; }
+  .hide-mobile { display: none !important; }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+  .two-col-grid {
+    gap: 2rem !important;
+  }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+  .hide-mobile { display: block !important; }
+}

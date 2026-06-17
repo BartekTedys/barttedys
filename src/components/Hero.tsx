@@ -71,7 +71,7 @@ export default function Hero() {
           <span style={{ color: 'var(--green-primary)' }}>Tedys</span>
         </h1>
 
-        <div style={{ height: isMobile ? 'auto' : '2.5rem', marginTop: '1.5rem', marginBottom: '2rem' }}>
+        <div style={{ height: '2.5rem', marginTop: '1.5rem', marginBottom: '2rem' }}>
           <p style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 'clamp(0.8rem, 1.5vw, 1.1rem)',
@@ -86,11 +86,11 @@ export default function Hero() {
         </div>
 
         {/* Description and CTAs - stack on mobile */}
-        <div style={{
+        <div className='two-col-grid' style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'clamp(280px, 40%, 560px) 1fr',
-          gap: isMobile ? '1.5rem' : '4rem',
-          alignItems: 'end', marginBottom: isMobile ? '3rem' : '5rem',
+          gridTemplateColumns: 'clamp(280px, 40%, 560px) 1fr',
+          gap: '4rem',
+          alignItems: 'end', marginBottom: '5rem',
         }}>
           <p style={{
             fontSize: 'clamp(0.9rem, 1.4vw, 1.1rem)',
@@ -125,10 +125,10 @@ export default function Hero() {
         </div>
 
         {/* Stats - 2 cols on mobile, 4 on desktop */}
-        <div style={{
+        <div className='stats-grid' style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-          gap: isMobile ? '1.5rem' : '2rem',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '2rem',
           paddingTop: '2rem', borderTop: '1px solid var(--border)',
         }}>
           {[

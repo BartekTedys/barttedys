@@ -42,7 +42,7 @@ export default function MapDemo() {
 
       map = L.map(mapRef.current!, {
         center: [51.9693, 5.6655],
-        zoom: 16,
+        zoom: 14,
         zoomControl: true,
         attributionControl: true,
       })
@@ -94,7 +94,7 @@ export default function MapDemo() {
         setMapStage('selected')
       })
 
-      // Mobile touch draw - only active when selectMode is true
+      // Mobile touch draw — only active when selectMode is true
       // We use a ref so the handler always reads current selectMode
       const selectModeRef = { current: false }
 
@@ -225,6 +225,7 @@ export default function MapDemo() {
         </p>
       </div>
 
+      <div className='hide-mobile'>
       <div style={{
         border: '1px solid var(--border)', borderRadius: '8px',
         overflow: 'hidden', position: 'relative', background: '#0d150d',
@@ -337,6 +338,34 @@ export default function MapDemo() {
             </p>
           </div>
         )}
+      </div>
+
+      </div>
+      {/* Mobile: show static preview instead of map */}
+      <div className="hide-desktop">
+        <div style={{
+          border: '1px solid var(--border)', borderRadius: '8px',
+          overflow: 'hidden', position: 'relative',
+        }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/wageningen-preview.jpg"
+            alt="Wageningen tree canopy detection overlay"
+            style={{ width: '100%', display: 'block' }}
+          />
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            background: 'linear-gradient(transparent, rgba(10,15,10,0.95))',
+            padding: '2rem 1.25rem 1.25rem',
+          }}>
+            <p style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '0.75rem', color: 'var(--text-secondary)', lineHeight: 1.7,
+            }}>
+              Tree canopy detection over Wageningen, Netherlands. Visit on desktop to draw selections and run live inference on any area.
+            </p>
+          </div>
+        </div>
       </div>
 
       {mapStage === 'done' && mapResult && (

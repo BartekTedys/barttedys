@@ -1,9 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { useIsMobile } from '@/lib/useIsMobile'
 
 export default function Contact() {
-  const isMobile = useIsMobile()
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
@@ -34,7 +32,7 @@ export default function Contact() {
       <div style={{
         maxWidth: '1400px',
         margin: '0 auto',
-        padding: '8rem clamp(2rem, 6vw, 8rem)',
+        padding: '4rem clamp(2rem, 6vw, 8rem) 8rem',
       }}>
         <div style={{
           height: '1px',
@@ -42,9 +40,9 @@ export default function Contact() {
           marginBottom: '5rem',
         }} />
 
-        <div style={{
+        <div className="two-col-grid" style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '5rem',
           alignItems: 'start',
         }}>

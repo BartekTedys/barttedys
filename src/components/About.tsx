@@ -17,7 +17,6 @@ export default function About() {
         margin: '0 auto',
         padding: '8rem clamp(2rem, 6vw, 8rem)',
       }}>
-        {/* Divider */}
         <div style={{
           height: '1px',
           background: 'linear-gradient(to right, transparent, var(--border), transparent)',
@@ -45,9 +44,9 @@ export default function About() {
           Who I am
         </h2>
 
-        <div style={{
+        <div className="two-col-grid" style={{
           display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '5rem',
           alignItems: 'start',
         }}>
@@ -88,7 +87,6 @@ export default function About() {
               {[
                 { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bartlomiej-tedys-6418ab251/', icon: '↗' },
                 { label: 'GitHub', href: 'https://github.com/BartekTedys', icon: '↗' },
-                
               ].map(l => (
                 <a key={l.label} href={l.href} target="_blank" rel="noreferrer" style={{
                   padding: '0.45rem 1rem', border: '1px solid var(--border)', borderRadius: '4px',

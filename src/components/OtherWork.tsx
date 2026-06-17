@@ -1,6 +1,4 @@
-import { useIsMobile } from '@/lib/useIsMobile'
 export default function OtherWork() {
-  const isMobile = useIsMobile()
   const PROJECTS = [
     {
       title: 'Caeli - Computer Vision Internship',
@@ -42,7 +40,7 @@ export default function OtherWork() {
 
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {PROJECTS.map((p, i) => (
-          <div key={p.title} style={{
+          <div key={p.title} className='two-col-grid' style={{
             display: 'grid',
             gridTemplateColumns: 'clamp(160px, 18%, 220px) 1fr',
             gap: '3rem',
