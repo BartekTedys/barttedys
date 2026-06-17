@@ -99,7 +99,7 @@ export default function Hero() {
             I trained a YOLOv11x segmentation model to detect individual tree canopies
             from aerial imagery at centimetre resolution. This is that model, running live.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', paddingTop: '1rem' }}>
             <a href="#demo" style={{
               padding: '0.85rem 2rem', background: 'var(--green-primary)', color: '#0a0f0a',
               borderRadius: '4px', fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)', fontWeight: 600,

@@ -91,7 +91,7 @@ export default function ModelInfo() {
             top: 0,
             right: 0,
             bottom: '1px',
-            width: '4rem',
+            width: '3rem',
             background: 'linear-gradient(to right, transparent, var(--surface))',
             pointerEvents: 'none',
           }} />
