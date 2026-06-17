@@ -1,9 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { useIsMobile } from '@/lib/useIsMobile'
 
 export default function ModelInfo() {
-  const isMobile = useIsMobile()
   const [activeTab, setActiveTab] = useState<'overview' | 'methodology' | 'results' | 'limitations'>('overview')
 
   const tabs = [
@@ -19,12 +17,14 @@ export default function ModelInfo() {
       background: 'var(--surface)',
       borderTop: '1px solid var(--border)',
       borderBottom: '1px solid var(--border)',
+      overflow: 'hidden',
     }}>
       <div style={{
         maxWidth: '1400px',
         margin: '0 auto',
         padding: '6rem clamp(2rem, 6vw, 8rem)',
         width: '100%',
+        overflow: 'hidden',
       }}>
         <p style={{
           fontFamily: "'JetBrains Mono', monospace",
@@ -47,36 +47,54 @@ export default function ModelInfo() {
           About the model
         </h2>
 
-        {/* Tabs */}
-        <div style={{
-          display: 'flex',
-          gap: '0',
-          borderBottom: '1px solid var(--border)',
-          marginBottom: '3rem',
-          overflowX: 'auto',
-          WebkitOverflowScrolling: 'touch',
-        }}>
-          {tabs.map(tab => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              style={{
-                padding: '0.75rem 1.5rem',
-                background: 'none',
-                border: 'none',
-                borderBottom: activeTab === tab.key ? '2px solid var(--green-primary)' : '2px solid transparent',
-                color: activeTab === tab.key ? 'var(--green-primary)' : 'var(--text-dim)',
-                cursor: 'pointer',
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: '0.75rem',
-                letterSpacing: '0.05em',
-                transition: 'all 0.2s',
-                marginBottom: '-1px',
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Tabs with fade hint */}
+        <div style={{ position: 'relative', marginBottom: '3rem' }}>
+          <div
+            className="tabs-row"
+            style={{
+              display: 'flex',
+              gap: '0',
+              borderBottom: '1px solid var(--border)',
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              WebkitOverflowScrolling: 'touch' as const,
+              maxWidth: '100%',
+            }}
+          >
+            {tabs.map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  background: 'none',
+                  border: 'none',
+                  borderBottom: activeTab === tab.key ? '2px solid var(--green-primary)' : '2px solid transparent',
+                  color: activeTab === tab.key ? 'var(--green-primary)' : 'var(--text-dim)',
+                  cursor: 'pointer',
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '0.75rem',
+                  letterSpacing: '0.05em',
+                  transition: 'all 0.2s',
+                  marginBottom: '-1px',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+          {/* Right fade gradient — hints at scrollable content on mobile */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: '1px',
+            width: '4rem',
+            background: 'linear-gradient(to right, transparent, var(--surface))',
+            pointerEvents: 'none',
+          }} />
         </div>
 
         {/* Tab content */}
@@ -212,7 +230,7 @@ export default function ModelInfo() {
                 {[
                   {
                     title: 'Dense forest annotation',
-                    body: 'Where tree crowns overlap continuously — as in forest patches — it was not possible to annotate individual instances at this image resolution. These areas were annotated as unified clusters, which means the model cannot separate individual trees within dense canopy. You\'ll see this in the Wageningen result as large merged blobs in forested zones.',
+                    body: "Where tree crowns overlap continuously — as in forest patches — it was not possible to annotate individual instances at this image resolution. These areas were annotated as unified clusters, which means the model cannot separate individual trees within dense canopy. You'll see this in the Wageningen result as large merged blobs in forested zones.",
                   },
                   {
                     title: 'Dataset size',
