@@ -42,7 +42,7 @@ export default function MapDemo() {
 
       map = L.map(mapRef.current!, {
         center: [51.9693, 5.6655],
-        zoom: 14,
+        zoom: 16,
         zoomControl: true,
         attributionControl: true,
       })

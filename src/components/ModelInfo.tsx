@@ -1,8 +1,41 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function ModelInfo() {
   const [activeTab, setActiveTab] = useState<'overview' | 'methodology' | 'results' | 'limitations'>('overview')
+  const tabsRowRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const hasBounced = useRef(false)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasBounced.current) {
+            hasBounced.current = true
+            const row = tabsRowRef.current
+            if (!row) return
+            // Only bounce if there's actually overflow to hint at
+            if (row.scrollWidth <= row.clientWidth) return
+
+            setTimeout(() => {
+              row.scrollTo({ left: 40, behavior: 'smooth' })
+              setTimeout(() => {
+                row.scrollTo({ left: 0, behavior: 'smooth' })
+              }, 450)
+            }, 500)
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const tabs = [
     { key: 'overview', label: 'Overview' },
@@ -12,7 +45,7 @@ export default function ModelInfo() {
   ] as const
 
   return (
-    <section id='research' style={{
+    <section id='research' ref={sectionRef} style={{
       width: '100%',
       background: 'var(--surface)',
       borderTop: '1px solid var(--border)',
@@ -50,6 +83,7 @@ export default function ModelInfo() {
         {/* Tabs with fade hint */}
         <div style={{ position: 'relative', marginBottom: '3rem' }}>
           <div
+            ref={tabsRowRef}
             className="tabs-row"
             style={{
               display: 'flex',
@@ -85,16 +119,6 @@ export default function ModelInfo() {
               </button>
             ))}
           </div>
-          {/* Right fade gradient — hints at scrollable content on mobile */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: '1px',
-            width: '3rem',
-            background: 'linear-gradient(to right, transparent, var(--surface))',
-            pointerEvents: 'none',
-          }} />
         </div>
 
         {/* Tab content */}
