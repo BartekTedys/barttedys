@@ -62,7 +62,7 @@ export default function ModelInfo() {
             if (!row) return
             if (row.scrollWidth <= row.clientWidth) return
 
-            setTimeout(() => playBounce(row, 2), 500)
+            setTimeout(() => playBounce(row, 2), 2000)
           }
         })
       },
