@@ -11,6 +11,48 @@ export default function ModelInfo() {
     const el = sectionRef.current
     if (!el) return
 
+    // Smoothly animates scrollLeft from `from` to `to` over `duration` ms using the given easing fn
+    const animateScroll = (
+      row: HTMLDivElement,
+      from: number,
+      to: number,
+      duration: number,
+      easing: (t: number) => number,
+      onDone?: () => void
+    ) => {
+      const start = performance.now()
+      const step = (now: number) => {
+        const elapsed = now - start
+        const t = Math.min(elapsed / duration, 1)
+        const eased = easing(t)
+        row.scrollLeft = from + (to - from) * eased
+        if (t < 1) {
+          requestAnimationFrame(step)
+        } else {
+          onDone?.()
+        }
+      }
+      requestAnimationFrame(step)
+    }
+
+    // Slow cosine-based ease-out for the rightward nudge
+    const easeOutCosine = (t: number) => 1 - Math.cos((t * Math.PI) / 2)
+    // Slightly elastic-feeling ease for the quick snap back
+    const easeInOutWave = (t: number) => 0.5 - 0.5 * Math.cos(Math.PI * t)
+
+    const playBounce = (row: HTMLDivElement, times: number) => {
+      if (times <= 0) return
+      animateScroll(row, 0, 36, 650, easeOutCosine, () => {
+        setTimeout(() => {
+          animateScroll(row, 36, 0, 380, easeInOutWave, () => {
+            if (times > 1) {
+              setTimeout(() => playBounce(row, times - 1), 350)
+            }
+          })
+        }, 280)
+      })
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -18,15 +60,9 @@ export default function ModelInfo() {
             hasBounced.current = true
             const row = tabsRowRef.current
             if (!row) return
-            // Only bounce if there's actually overflow to hint at
             if (row.scrollWidth <= row.clientWidth) return
 
-            setTimeout(() => {
-              row.scrollTo({ left: 40, behavior: 'smooth' })
-              setTimeout(() => {
-                row.scrollTo({ left: 0, behavior: 'smooth' })
-              }, 450)
-            }, 500)
+            setTimeout(() => playBounce(row, 2), 500)
           }
         })
       },
