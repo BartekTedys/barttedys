@@ -13,6 +13,7 @@ export default function About() {
   const links = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bartlomiej-tedys-6418ab251/', icon: '↗' },
     { label: 'GitHub', href: 'https://github.com/BartekTedys', icon: '↗' },
+    { label: 'Download CV', href: '/CV_Bartlomiej_Tedys', icon: '↓' },
   ]
 
   return (
