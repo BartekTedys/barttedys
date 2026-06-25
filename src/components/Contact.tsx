@@ -72,7 +72,7 @@ export default function Contact() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[
                 { label: 'Email', value: 'barttedys@gmail.com', href: 'mailto:barttedys@gmail.com' },
-                { label: 'LinkedIn', value: 'linkedin.com/in/bartlomiej-tedys', href: 'https://www.linkedin.com/in/bartlomiej-tedys-6418ab251/' },
+                { label: 'LinkedIn', value: 'linkedin.com/in/bartlomiej-tedys', href: 'https://www.linkedin.com/in/bartlomiej-tedys/' },
                 { label: 'GitHub', value: 'github.com/BartekTedys', href: 'https://github.com/BartekTedys' },
               ].map(item => (
                 <div key={item.label} style={{ display: 'flex', gap: '1.5rem', alignItems: 'baseline' }}>
