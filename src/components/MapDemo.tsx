@@ -94,7 +94,7 @@ export default function MapDemo() {
         setMapStage('selected')
       })
 
-      // Mobile touch draw — only active when selectMode is true
+      // Mobile touch draw, only active when selectMode is true
       // We use a ref so the handler always reads current selectMode
       const selectModeRef = { current: false }
 

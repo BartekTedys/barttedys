@@ -20,7 +20,7 @@ function checkRateLimit(ip: string): boolean {
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for') ?? 'unknown'
   if (!checkRateLimit(ip)) {
-    return NextResponse.json({ error: 'Too many requests — please wait a minute.' }, { status: 429 })
+    return NextResponse.json({ error: 'Too many requests, please wait a minute.' }, { status: 429 })
   }
 
   if (!MODAL_URL) {

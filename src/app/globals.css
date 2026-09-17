@@ -67,7 +67,7 @@ body {
 
 .animate-blink { animation: blink 1s step-end infinite; }
 
-/* Mobile layout overrides — more reliable than JS detection */
+/* Mobile layout overrides, more reliable than JS detection */
 @media (max-width: 768px) {
   .two-col-grid {
     display: block !important;

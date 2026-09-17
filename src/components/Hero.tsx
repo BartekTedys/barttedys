@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useIsMobile } from '@/lib/useIsMobile'
 
 const TAGLINES = [
+  'Full-stack web apps, AI tooling, and geospatial ML.',
   'Tree canopy detection from aerial imagery.',
   'Instance segmentation at 8cm resolution.',
   'Urban forest mapping with YOLOv11.',
@@ -59,7 +60,7 @@ export default function Hero() {
           color: 'var(--green-primary)', letterSpacing: '0.15em',
           textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.9,
         }}>
-          Geospatial ML · Remote Sensing · Software Development
+          Software Development · Full-Stack & AI · Geospatial ML
         </p>
 
         <h1 style={{

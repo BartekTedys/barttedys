@@ -66,8 +66,8 @@ export default function Contact() {
               color: 'var(--text-secondary)', fontSize: '1rem',
               lineHeight: 1.75, fontWeight: 300, marginBottom: '2.5rem', maxWidth: '420px',
             }}>
-              Whether you have a project in mind, want to discuss geospatial ML,
-              or are looking to hire - I&apos;m open to conversations.
+              Whether you have a project in mind, want to discuss software, AI or
+              geospatial ML, or are looking to hire - I&apos;m open to conversations.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[

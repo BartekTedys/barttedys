@@ -4,10 +4,11 @@ import { useIsMobile } from '@/lib/useIsMobile'
 export default function About() {
   const isMobile = useIsMobile()
   const skills = [
-    { cat: 'ML / Vision', items: ['YOLOv11', 'PyTorch', 'TensorFlow', 'Instance Segmentation', 'QGIS', 'Deepness'] },
-    { cat: 'Backend', items: ['Python', 'FastAPI', 'Node.js', 'PostgreSQL', 'REST APIs'] },
     { cat: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-    { cat: 'Geospatial', items: ['PDOK / WMS/WMTS', 'GeoJSON', 'Leaflet', 'Remote Sensing', 'Aerial Imagery'] },
+    { cat: 'Backend', items: ['Python', 'FastAPI', 'Node.js', 'PostgreSQL', 'REST APIs', 'Supabase'] },
+    { cat: 'AI & Automation', items: ['Prompt Engineering', 'LLM Evaluation', 'PyTorch', 'TensorFlow', 'Instance Segmentation'] },
+    { cat: 'Geospatial', items: ['QGIS', 'PDOK / WMS/WMTS', 'GeoJSON', 'Leaflet', 'Remote Sensing', 'Deepness'] },
+    { cat: 'IT & Systems', items: ['Microsoft 365 Admin', 'Email & MFA Setup', 'Git', 'Linux'] },
   ]
 
   const links = [
@@ -71,17 +72,17 @@ export default function About() {
               <div>
                 <p style={{ fontWeight: 600, color: 'var(--text-primary)', marginBottom: '0.2rem', fontSize: '1.05rem' }}>Bartlomiej Tedys</p>
                 <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                  Ireland → Netherlands
+                  Ireland · Open to relocation
                 </p>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               {[
-                `I'm Bartek, a software developer and ML engineer who just finished a BSc in Software Development at Munster Technological University in Cork, with a semester abroad at Hogeschool van Amsterdam.`,
-                `My thesis compared three instance segmentation models for detecting individual tree canopies in aerial imagery. YOLOv11x came out on top. The model on this page is the result of that work.`,
-                `I'm based in Ireland right now and relocating to the Netherlands, a country I have a lot of respect for, both technically and professionally. I'm looking for roles in geospatial ML, computer vision, or software development in the Dutch tech scene.`,
-                `Beyond the trees: I've built web apps, data pipelines, mobile applications, and done freelance development for small businesses. I like problems that sit at the intersection of data and real-world impact.`,
+                `I'm Bartek, a software developer who just finished a BSc in Software Development (First-Class Honours) at Munster Technological University in Cork, with a semester abroad at Hogeschool van Amsterdam.`,
+                `Day to day, I build full-stack web apps and work on applied AI: I write and evaluate prompts for AI model training, and build practical tools that automate real business processes, like a contract and quotation platform for a home renovation company, and a live marketplace platform for a steel trading business, including its Microsoft 365 setup.`,
+                `My thesis compared three instance segmentation models for detecting individual tree canopies in aerial imagery. YOLOv11x came out on top, and the model on this page is the result of that work. Geospatial ML and computer vision are genuine interests I'd like to build a career in over time.`,
+                `I'm based in Ireland and have a lot of respect for the Dutch tech scene, both technically and professionally, so I'm open to relocating for the right opportunity. Right now I'm focused on broadening into general software development, AI integration and systems work, with geospatial ML as a specialism I keep coming back to.`,
               ].map((para, i) => (
                 <p key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.8, fontWeight: 300 }}>
                   {para}
@@ -118,7 +119,7 @@ export default function About() {
                     boxShadow: '0 0 8px var(--green-primary)',
                   }} />
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
-                    Available for work - open to roles in the Netherlands
+                    Available for work - open to relocation
                   </p>
                 </div>
               </>
@@ -226,7 +227,7 @@ export default function About() {
                     boxShadow: '0 0 8px var(--green-primary)',
                   }} />
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', fontFamily: "'JetBrains Mono', monospace" }}>
-                    Available for work - open to roles in the Netherlands
+                    Available for work - open to relocation
                   </p>
                 </div>
               </>
